@@ -1,0 +1,11 @@
+Django==1.9.1
+django-mssql==1.7
+django-pyodbc==0.3.0
+django-pyodbc-azure==1.9.1.0
+djangorestframework==3.3.2
+Pillow==3.1.0
+pyodbc==3.0.10
+South==1.0.2
+sql-server.pyodbc==1.0
+tablib==0.10.0
+wheel==0.24.0
