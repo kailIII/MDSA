@@ -3,7 +3,7 @@ from django.views.generic import CreateView
 
 from .forms import PaisForm
 from .models import Pais
-
+from .serializers import PaisSerializer
 from rest_framework import viewsets
 
 # Create your views here.
@@ -29,6 +29,10 @@ class PaisCreateView(CreateView):
 		context.update(data)
 		return context
 
+
+
+
 class PaisViewSet(viewsets.ModelViewSet):
-	model = Pais
-	
+	model            = Pais
+	serializer_class = PaisSerializer
+	queryset         = Pais.objects.all()

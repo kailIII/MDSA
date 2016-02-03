@@ -22,4 +22,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
  	url(r'^pais/', include('paises.urls', namespace='pais')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
