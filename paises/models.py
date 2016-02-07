@@ -6,16 +6,15 @@ from django.db import models
 # Create your models here.
 class Pais(models.Model):
 	#Atributos
-	nombre   		= models.CharField(max_length=255, unique=True, help_text="Escribir nombre del país.")
-	codigo_postal  	= models.IntegerField(verbose_name='Código postal', blank=True)
-	imagen 		   	= models.ImageField(blank=True, upload_to="imagenes_paises", help_text="Subir imagen del país. (Opcional)")
-	descripcion    	= models.TextField(blank=True, help_text="Escribir descripción del pais. (Opcional)")
+	nombre   		= models.CharField(max_length=255, unique=True, help_text='Escribir nombre del país.')
+	codigo_postal  	= models.IntegerField(verbose_name='Código postal')
+	descripcion    	= models.TextField(blank=True, help_text='Escribir descripción del país. (Opcional)')
+	imagen 		   	= models.ImageField(blank=True, upload_to='imagenes_paises', help_text='Subir imagen del país. (Opcional)')
 	#slug 			= models.SlugField(max_length=255, unique=True)
 	
 	#Métodos
 	def __unicode__(self):
 		return self.nombre
-	
 	#Opciones
 	class Meta:
 		#Nombre para la tabla del gestor de base de datos 

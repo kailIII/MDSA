@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Update</title>
+</head>
+<body>
+	<div>
+		<!-- El Action puede obviarce {% url "pais:update" pk=object.id %} -->
+		<form action="" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{form.as_p}}
+			<input type="submit" value="actualizar departamento."/>
+		</form>
+		<div>
+			{% if is_auth %}
+				{{username}} <a href="">LogOut</a>
+			{% else %}
+				<a href="">LogIn</a>
+			{% endif %}
+		</div>
+	</div>
+</body>
+</html>

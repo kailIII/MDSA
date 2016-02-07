@@ -16,11 +16,24 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
+
 from django.conf.urls.static import static
 
+from rest_framework import routers
+
+#ViewSet 
+from paises.views import PaisViewSet 
+
+router = routers.DefaultRouter()
+router.register(r'paises', PaisViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
  	url(r'^pais/', include('paises.urls', namespace='pais')),
+ 	url(r'^departamento/', include('departamentos.urls', namespace='departamento')),
+ 	url(r'^provincia/', include('provincias.urls', namespace='provincia')),
+ 	url(r'^distrito/', include('distritos.urls', namespace='distrito')),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ 	url(r'^api/', include(router.urls))
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
