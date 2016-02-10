@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 from django.contrib import admin
-from paises.models import Pais
 from .models import Departamento
 
 # Register your models here.

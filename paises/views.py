@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render
-from django.views.generic import TemplateView
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
@@ -8,6 +7,7 @@ from django.views.generic import DetailView
 from django.views.generic import ListView
 
 from .models import Pais
+from .mixins import LoginRequiredMixin
 from .forms import PaisForm
 from .serializers import PaisSerializer
 
@@ -16,30 +16,30 @@ from rest_framework import viewsets
 
 
 # Create your views here.
-class PaisCreateView(CreateView):
+class PaisCreateView(LoginRequiredMixin, CreateView):
 	form_class    = PaisForm
 	models        = Pais
 	success_url   = reverse_lazy('pais:list')
 	template_name = 'pais_create.html'
 
 	def get_context_data(self, **kwarg):
-		context = super(PaisCreateView, self).get_context_data(**kwarg)
-		is_auth = False 
-		name    = None
+		context  = super(PaisCreateView, self).get_context_data(**kwarg)
+		is_auth  = False 
+		username = None
 		if self.request.user.is_authenticated():
-			is_auth = True
-			name    = self.request.user.username
+			is_auth 	= True
+			username    = self.request.user.username
 
 		data = {
-			'is_auth':is_auth,
-			'name'   :name
+			'is_auth'	 :is_auth,
+			'username'   :username
 		}
 
 		context.update(data)
 		return context
 
 
-class PaisUpdateView(UpdateView):
+class PaisUpdateView(LoginRequiredMixin, UpdateView):
 	form_class    = PaisForm
 	models        = Pais
 	success_url   = reverse_lazy('pais:list')
@@ -47,81 +47,81 @@ class PaisUpdateView(UpdateView):
 	queryset	  = Pais.objects.all()
 
 	def get_context_data(self, **kwarg):
-		context = super(PaisUpdateView, self).get_context_data(**kwarg)
-		is_auth = False 
-		name    = None
+		context  = super(PaisUpdateView, self).get_context_data(**kwarg)
+		is_auth  = False 
+		username = None
 		if self.request.user.is_authenticated():
 			is_auth = True
-			name    = self.request.user.username
+			username    = self.request.user.username
 
 		data = {
-			'is_auth':is_auth,
-			'name'   :name
+			'is_auth'	 :is_auth,
+			'username'   :username
 		}
 
 		context.update(data)
 		return context
 
 
-class PaisDeleteView(DeleteView):
+class PaisDeleteView(LoginRequiredMixin, DeleteView):
 	models        = Pais
 	queryset	  = Pais.objects.all()
 	success_url   = reverse_lazy('pais:list')
 	template_name = 'pais_delete.html'
 
 	def get_context_data(self, **kwarg):
-		context = super(PaisDeleteView, self).get_context_data(**kwarg)
-		is_auth = False 
-		name    = None
+		context  = super(PaisDeleteView, self).get_context_data(**kwarg)
+		is_auth  = False 
+		username = None
 		if self.request.user.is_authenticated():
-			is_auth = True
-			name    = self.request.user.username
+			is_auth  = True
+			username = self.request.user.username
 
 		data = {
-			'is_auth':is_auth,
-			'name'   :name
+			'is_auth'	 :is_auth,
+			'username'   :username
 		}
 
 		context.update(data)
 		return context
 
 
-class PaisDetailView(DetailView):
+class PaisDetailView(LoginRequiredMixin, DetailView):
 	model = Pais 
 	template_name = 'pais_detail.html'
 
 	def get_context_data(self, **kwarg):
-		context = super(PaisDetailView, self).get_context_data(**kwarg)
-		is_auth = False 
-		name    = None
+		context  = super(PaisDetailView, self).get_context_data(**kwarg)
+		is_auth  = False 
+		username = None
 		if self.request.user.is_authenticated():
 			is_auth = True
-			name    = self.request.user.username
+			username = self.request.user.username
 
 		data = {
 			'is_auth':is_auth,
-			'name'   :name
+			'username'   :username
 		}
 
 		context.update(data)
 		return context
 
 		
-class PaisListView(ListView):
+class PaisListView(LoginRequiredMixin, ListView):
 	model         = Pais 
 	template_name = 'pais_list.html'
 	paginate_by   = 10
 	def get_context_data(self, **kwarg):
-		context = super(PaisListView, self).get_context_data(**kwarg)
-		is_auth = False 
-		name    = None
+		context 	= super(PaisListView, self).get_context_data(**kwarg)
+		is_auth 	= False 
+		username    = None
 		if self.request.user.is_authenticated():
-			is_auth = True
-			name    = self.request.user.username
+			is_auth 	= True
+			username    = self.request.user.username
 
 		data = {
-			'is_auth':is_auth,
-			'name'   :name
+			'is_auth'	 :is_auth,
+			'username'   :username
 		}
 
 		context.update(data)

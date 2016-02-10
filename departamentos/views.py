@@ -38,7 +38,7 @@ class DepartamentoCreateView(LoginRequiredMixin, CreateView):
 		return context
 
 
-class DepartamentoUpdateView(UpdateView):
+class DepartamentoUpdateView(LoginRequiredMixin, UpdateView):
 	form_class 		= DepartamentoForm
 	model 			= Departamento
 	queryset		= Departamento.objects.all()
@@ -63,7 +63,7 @@ class DepartamentoUpdateView(UpdateView):
 		return context
 
 
-class DepartamentoDeleteView(DeleteView):
+class DepartamentoDeleteView(LoginRequiredMixin, DeleteView):
 	model 		  = Departamento
 	queryset	  = Departamento.objects.all()
 	success_url   = reverse_lazy('departamento:list')
@@ -87,7 +87,7 @@ class DepartamentoDeleteView(DeleteView):
 		return context
 
 
-class DepartamentoDetailView(DetailView):
+class DepartamentoDetailView(LoginRequiredMixin, DetailView):
 	model = Departamento 
 	template_name = 'departamento_detail.html'
 
@@ -109,7 +109,7 @@ class DepartamentoDetailView(DetailView):
 		return context
 
 		
-class DepartamentoListView(ListView):
+class DepartamentoListView(LoginRequiredMixin, ListView):
 	model         = Departamento 
 	template_name = 'departamento_list.html'
 	paginate_by   = 10
