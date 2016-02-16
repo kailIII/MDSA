@@ -9,13 +9,13 @@ from django.views.generic import ListView
 from .models import Departamento
 from .forms import DepartamentoForm
 from .serializers import DepartamentoSerializer
-from .mixins import LoginRequiredMixin
+from .mixins import AccessUserRequiredMixin
 
 from django.core.urlresolvers import reverse_lazy
 from rest_framework import viewsets
 
 # Create your views here.
-class DepartamentoCreateView(LoginRequiredMixin, CreateView):
+class DepartamentoCreateView(AccessUserRequiredMixin, CreateView):
 	form_class    = DepartamentoForm
 	models        = Departamento
 	success_url   = reverse_lazy('departamento:list')
@@ -38,7 +38,7 @@ class DepartamentoCreateView(LoginRequiredMixin, CreateView):
 		return context
 
 
-class DepartamentoUpdateView(LoginRequiredMixin, UpdateView):
+class DepartamentoUpdateView(AccessUserRequiredMixin, UpdateView):
 	form_class 		= DepartamentoForm
 	model 			= Departamento
 	queryset		= Departamento.objects.all()
@@ -63,7 +63,7 @@ class DepartamentoUpdateView(LoginRequiredMixin, UpdateView):
 		return context
 
 
-class DepartamentoDeleteView(LoginRequiredMixin, DeleteView):
+class DepartamentoDeleteView(AccessUserRequiredMixin, DeleteView):
 	model 		  = Departamento
 	queryset	  = Departamento.objects.all()
 	success_url   = reverse_lazy('departamento:list')
@@ -87,7 +87,7 @@ class DepartamentoDeleteView(LoginRequiredMixin, DeleteView):
 		return context
 
 
-class DepartamentoDetailView(LoginRequiredMixin, DetailView):
+class DepartamentoDetailView(AccessUserRequiredMixin, DetailView):
 	model = Departamento 
 	template_name = 'departamento_detail.html'
 
@@ -109,7 +109,7 @@ class DepartamentoDetailView(LoginRequiredMixin, DetailView):
 		return context
 
 		
-class DepartamentoListView(LoginRequiredMixin, ListView):
+class DepartamentoListView(AccessUserRequiredMixin, ListView):
 	model         = Departamento 
 	template_name = 'departamento_list.html'
 	paginate_by   = 10

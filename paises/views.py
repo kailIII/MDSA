@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 from django.views.generic import ListView
 
 from .models import Pais
-from .mixins import LoginRequiredMixin
+from .mixins import AccessUserRequiredMixin
 from .forms import PaisForm
 from .serializers import PaisSerializer
 
@@ -16,7 +16,7 @@ from rest_framework import viewsets
 
 
 # Create your views here.
-class PaisCreateView(LoginRequiredMixin, CreateView):
+class PaisCreateView(AccessUserRequiredMixin, CreateView):
 	form_class    = PaisForm
 	models        = Pais
 	success_url   = reverse_lazy('pais:list')
@@ -39,7 +39,7 @@ class PaisCreateView(LoginRequiredMixin, CreateView):
 		return context
 
 
-class PaisUpdateView(LoginRequiredMixin, UpdateView):
+class PaisUpdateView(AccessUserRequiredMixin, UpdateView):
 	form_class    = PaisForm
 	models        = Pais
 	success_url   = reverse_lazy('pais:list')
@@ -63,7 +63,7 @@ class PaisUpdateView(LoginRequiredMixin, UpdateView):
 		return context
 
 
-class PaisDeleteView(LoginRequiredMixin, DeleteView):
+class PaisDeleteView(AccessUserRequiredMixin, DeleteView):
 	models        = Pais
 	queryset	  = Pais.objects.all()
 	success_url   = reverse_lazy('pais:list')
@@ -86,7 +86,7 @@ class PaisDeleteView(LoginRequiredMixin, DeleteView):
 		return context
 
 
-class PaisDetailView(LoginRequiredMixin, DetailView):
+class PaisDetailView(AccessUserRequiredMixin, DetailView):
 	model = Pais 
 	template_name = 'pais_detail.html'
 
@@ -107,7 +107,7 @@ class PaisDetailView(LoginRequiredMixin, DetailView):
 		return context
 
 		
-class PaisListView(LoginRequiredMixin, ListView):
+class PaisListView(AccessUserRequiredMixin, ListView):
 	model         = Pais 
 	template_name = 'pais_list.html'
 	paginate_by   = 10

@@ -7,8 +7,13 @@ from django.views.generic import DetailView
 from django.views.generic import ListView
 
 from .models import EstadoCivil
-from .mixins import LoginRequiredMixin
-#from braces import views
+#from .mixins import LoginRequiredMixin
+
+from braces.views import LoginRequiredMixin
+from braces.views import StaffuserRequiredMixin
+from braces.views import MultiplePermissionsRequiredMixin
+from braces.views import AnonymousRequiredMixin
+
 from .forms import EstadoCivilForm
 from .serializers import EstadoCivilSerializer
 
@@ -16,11 +21,23 @@ from django.core.urlresolvers import reverse_lazy
 from rest_framework import viewsets
 
 # Create your views here.
-class EstadoCivilCreateView(LoginRequiredMixin, CreateView):
+class EstadoCivilCreateView(LoginRequiredMixin, StaffuserRequiredMixin, MultiplePermissionsRequiredMixin, AnonymousRequiredMixin, CreateView):
+	
+	#LoginRequiredMixin
+	login_url	  = '/admin/'
+	#MultiplePermissionsRequiredMixin
+	permissions   = {
+					 'all':('estados_civiles.add_estado_civil', 
+					 		'estados_civiles.change_estado_civil', 
+					 		'estados_civiles.delete_estado_civil'),
+					}
+	#CreateView
 	form_class	  = EstadoCivilForm 
 	template_name = 'estado_civil_create.html'
 	success_url   = reverse_lazy('estado_civil:list')
 	model 		  = EstadoCivil 
+	#AnonymousRequiredMixin
+	authenticated_redirect_url = 'www.google.com'
 
 	def get_context_data(self, **kwarg):
 		context  = super(EstadoCivilCreateView, self).get_context_data(**kwarg)
