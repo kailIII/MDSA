@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 Django settings for app project.
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'paises.apps.PaisesConfig',
     'departamentos.apps.DepartamentosConfig',
     'provincias.apps.ProvinciasConfig',
@@ -45,10 +47,34 @@ INSTALLED_APPS = [
     'zonas.apps.ZonasConfig',
 
     'documentos_identificaciones.apps.DocumentosIdentificacionesConfig',
+    'codigos_barras.apps.CodigosBarrasConfig',
     'estados_civiles.apps.EstadosCivilesConfig',
     'grupos_sanguineos.apps.GruposSanguineosConfig',
-
+    'grados_instrucciones.apps.GradosInstruccionesConfig',
+    'areas.apps.AreasConfig',
+    'cargos.apps.CargosConfig',
+    'ocupaciones.apps.OcupacionesConfig',
+    'profesiones.apps.ProfesionesConfig',
+    'entidades.apps.EntidadesConfig',
+    'sedes.apps.SedesConfig',
+    'tipos_areas.apps.TiposAreasConfig',
+    'tipos_entidades.apps.TiposEntidadesConfig',
+    'tipos_empleados.apps.TiposEmpleadosConfig',
+    'tipos_documentos.apps.TiposDocumentosConfig',
     'personas.apps.PersonasConfig',
+    'empleados.apps.EmpleadosConfig',
+    'usuarios.apps.UsuariosConfig',
+
+    'nexos.apps.NexosConfig',
+
+    'documentos.apps.DocumentosConfig',
+
+    'estados.apps.EstadosConfig',
+    'prioridades.apps.PrioridadesConfig',
+    'situaciones.apps.SituacionesConfig',
+    'mensajes.apps.MensajesConfig',
+    'bandejas.apps.BandejasConfig',
+    'bandejas_mensajes.apps.BandejasMensajesConfig',
     'rest_framework',
 ]
 
@@ -67,7 +93,8 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #Esribir dirección por defecto de templates.
+        'DIRS': [os.path.join(os.path.dirname(__file__) , 'templates').replace('\\','/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,9 +164,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-
 STATIC_URL = '/static/'
 
 #Imagenes, audios y videos
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
 MEDIA_URL  = '/media/'
+
+#Configuración de Usuario 
+AUTH_USER_MODEL = 'usuarios.Usuario'
+
+#Configuración de Logueo 
+LOGIN_REDIRECT_URL = '/admin/' # LogIn
+LOGOUT_REDIRECT_URL = '/'
+
+#LOGIN_URL='/usuario/login' 

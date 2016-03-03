@@ -36,6 +36,9 @@ urlpatterns = [
 
  	url(r'^documento_identificacion/', include('documentos_identificaciones.urls', namespace='documento_identificacion')),
  	url(r'^estado_civil/', include('estados_civiles.urls', namespace='estado_civil')),
+
+ 	url(r'^usuario/', include('usuarios.urls', namespace='usuario')),
+
  	url(r'^api/', include(router.urls))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

@@ -2,10 +2,12 @@
 from django.contrib import admin
 from .models import Pais
 
-# Register your models here.
+
 @admin.register(Pais)
 class PaisAdmin(admin.ModelAdmin):
-	list_display   = ('nombre', 'codigo_postal', 'descripcion', 'imagen',)
+	list_display   = ('nombre', 'codigo_postal', 'descripcion', 'imagen', 
+					  'slug', 'fecha_registro', 'usuario_creador', 'fecha_ultima_actualizacion', 
+					  'ultimo_usuario_editor', 'nombre_host', 'direccion_ip')
 	list_instances = True
 	search_fields  = ('nombre',)
 

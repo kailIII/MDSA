@@ -1,15 +1,20 @@
+
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
+from distritos.models import Distrito 
 from documentos_identificaciones.models import DocumentoIdentificacion
+from estados.models import Estado 
 from estados_civiles.models import EstadoCivil
 from grupos_sanguineos.models import GrupoSanguineo
-from distritos.models import Distrito 
-from zonas.models import Zona 
+from usuarios.models import Usuario
 from vias.models import Via 
+from zonas.models import Zona 
 
-# Create your models here.
+from django.core.validators import validate_ipv46_address
+
+
 class Persona(models.Model):
 
 	BOOL_GENERO 	 				= ((True, 'Masculino'), (False, "Femenino"))
@@ -31,6 +36,8 @@ class Persona(models.Model):
 	zona							= models.ForeignKey(Zona)
 	via								= models.ForeignKey(Via)
 	nombre_direccion				= models.CharField(max_length=255, help_text="Escribir nombre de la dirección.")
+	edificio						= models.CharField(blank=True, max_length=20, null=True)
+	apartamento						= models.CharField(blank=True, max_length=20, null=True)
 	departamento					= models.CharField(blank=True, max_length=20, null=True)
 	piso							= models.CharField(blank=True, max_length=20, null=True)
 	interior						= models.CharField(blank=True, max_length=20, null=True)
@@ -42,9 +49,16 @@ class Persona(models.Model):
 	denominacion					= models.CharField(blank=True, max_length=255, help_text="Escribir denominación (Opcional).", null=True)
 	referencia						= models.CharField(blank=True, max_length=255, help_text="Escribir referencia (Opcional).", null=True)
 	observacion_direccion			= models.CharField(blank=True, max_length=255, help_text="Escribir observación de la dirección (Opcional).", null=True)
-	telefono_personal				= models.IntegerField(blank=True, help_text="Escribir número de teléfono personal (Opcional).", default=0)
-	celular_personal				= models.IntegerField(blank=True, help_text="Escribir número de celular personal (Opcional).", default=0)
-	e_mail							= models.EmailField(blank=True, max_length=255, help_text="Escribir E-Mail (Opcional).", null=True)
+	telefono_personal				= models.PositiveIntegerField(blank=True, help_text="Escribir número de teléfono personal (Opcional).", default=0)
+	celular_personal				= models.PositiveIntegerField(blank=True, help_text="Escribir número de celular personal (Opcional).", default=0)
+	email							= models.EmailField(blank=True, max_length=255, help_text="Escribir E-Mail (Opcional).", null=True)
+	fecha_registro 			   		= models.DateTimeField(auto_now_add=True, auto_now=False)
+	usuario_creador          	 	= models.ForeignKey(Usuario)
+	fecha_ultima_actualizacion 		= models.DateTimeField(auto_now_add=False, auto_now=True) 
+	ultimo_usuario_editor			= models.ForeignKey(Usuario, related_name='persona_usuario_editor')
+	nombre_host				    	= models.CharField(max_length=255)
+	direccion_ip			    	= models.GenericIPAddressField(validators=[validate_ipv46_address])
+	estado							= models.ForeignKey(Estado)
 
 	def __unicode__(self):
 		return self.apellido_paterno + " " + self.apellido_materno + " " + self.nombre
