@@ -1,0 +1,107 @@
+{% extends 'base_main.html'%}
+{% load static from staticfiles %}
+
+{% block header%}
+	<!-- Head Menu-->
+	<div class="HeadMenu {% block color_fondo %} {% endblock color_fondo %}">
+		<!-- Avatar - Imagen - Sistema-->
+		<figure class="Avatar" id="Avatar-Sistema">
+			<img src="{% block avatar_sistema %} {% endblock avatar_sistema %}" alt="" class="Avatar-Imagen"/>
+		</figure>
+		<!-- Rótulo del Módulo -->
+		<div class="HeadMenu-Marco">
+			<h2 class="SubTitulo">
+				{% block titulo_menu%}
+				{% endblock titulo_menu%}	
+			</h2>
+		</div>
+		<!-- Avatar - Imagen - Modulo -->
+		<figure class="Avatar" id="Avatar-Modulo">
+			<img src="{% block avatar_modulo %} {% endblock avatar_modulo %}" alt="" class="Avatar-Imagen"/>
+		</figure>
+	</div>
+	
+	<!-- Menu -->
+	<nav class="Menu {% block color_menu_principal %} {% endblock color_menu_principal %}">
+		<!-- Boton Open -->
+		<div class="Menu-Boton" id="Menu-Boton-Open">
+			
+		</div>
+		<!-- Usuario -->
+		<div class="Menu-Usuario" id="Menu-Usuario">
+			<!-- Usuario - Avatar  -->
+			<figure class="Menu-Usuario-Avatar">
+				<!-- Usuario - Avatar - Imagen -->
+				<a href="{% url 'usuario:detail' id_usuario %}"  class="Menu-Usuario-Avatar-Link">
+					<img src="{{avatar.url}}" alt="" class="Menu-Usuario-Avatar-Link-Imagen"/>
+				</a>
+				<!-- Usuario - Avatar - Nombre -->
+				<figcaption class="Menu-Usuario-Avatar-Nombre">
+					<a href="{% url 'usuario:detail' id_usuario %}" class="Menu-Usuario-Avatar-Nombre-Link">
+						{{username}}
+					</a>
+				</figcaption>
+			</figure>
+			<!-- Configuración -->
+			<div class="Menu-Usuario-Configuracion">
+				<!-- Boton de Configuración -->
+				<div class="Boton">
+					
+				</div>
+				<!-- Panel de Configuración de Usuario -->
+				<ul class="Panel">
+					<li class="Panel-Item">
+						<a href="{% url 'usuario:detail' id_usuario %} " class="Panel-Item-Link">
+							Perfil de Usuario
+						</a>
+					</li>
+					<li class="Panel-Item">
+						<a href="" class="Panel-Item-Link">
+							Salir
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+{% endblock header%}
+
+
+{% block footer %}
+	<div class="PiePagina ">
+			<!-- Logotipo Entidad -->
+			<figure class="LogotipoEntidad" id="LogotipoEntidad-Usuario">
+				<!-- Imagen -->
+				<img src="{% static "imagenes/png/Escudo-Oficial-1.png" %}" alt="" class="LogotipoEntidad-Imagen"/>
+				<!-- Nombre Entidad -->
+				<figcaption class="LogotipoEntidad-NombreEntidad">
+					 <a href="#" class="LogotipoEntidad-NombreEntidad-Link">
+					 	M.D.S.A.
+					 </a>
+				</figcaption>
+			</figure>
+			<!-- Copyright -->
+			<div class="Copyright">
+				<p class="Copyright-Descripcion">
+					© Copyright  
+				</p>
+				<!-- Entidad -->
+				<h2 href="" class="Copyright-Entidad">
+					<a href=""  class="Copyright-Entidad-Link">
+						Municipalidad Distrital de San Andrés
+					</a>
+				</h2>
+			</div>
+			<!-- Logotipo Entidad Creador -->
+			<figure class="LogotipoEntidad" id="LogotipoEntidad-Creador">
+				<!-- Nombre Entidad Creador -->
+				<figcaption class="LogotipoEntidad-NombreEntidad">
+					 <a href="#" class="LogotipoEntidad-NombreEntidad-Link">
+					 	U.T.I.
+					 </a>
+				</figcaption>
+				<!-- Imagen -->
+				<img src="{% static "imagenes/jpg/Ojo-Bionico-1.jpg" %}" alt="" class="LogotipoEntidad-Imagen  Border-Radius-Circular"/>
+			</figure>
+		</div>
+{% endblock footer %}

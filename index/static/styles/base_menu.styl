@@ -1,0 +1,311 @@
+amarillo_claro = #ffe788
+gris = #FAFAFA
+gris_oscuro = #333636
+turqueza = #1bd6e0
+aside 
+	background url(../imagenes/jpg/Avion-1.jpg)
+	background-size cover
+	background-position center
+	background-repeat no-repeat
+	left -480px
+	position absolute
+	top 0 
+	z-index 5 
+	width 100%
+	height 100vh
+	.BarraModulos
+		align-items center
+		background rgba(black, .3)
+		display flex 
+		height 100vh
+		justify-content center 
+		width 100%
+		.Modulos
+			height 50%
+			width 100%
+			overflow-y auto
+			&-Item 
+				box-shadow 0 0 1px white
+				width 100%
+				display flex 
+				justify-content center 
+				align-items center
+				&-Avatar
+					&-Link 
+						margin .2em 0
+						height 60px 
+						width 60px 
+						border-right 2px solid white 
+						display flex 
+						justify-content center 
+						align-items center
+						transition .3s
+						&:hover 
+							border 2px solid white 
+							box-shadow 0 0 10px amarillo_claro
+							border-radius 50%
+						&-Imagen 
+							vertical-align top
+							height 45px 
+							width 45px
+							transition .3s
+							&:hover 
+								transform rotateY(360deg)
+				&-Modulo 
+					margin 0 .5em
+					height 40px 
+					width 70%
+					border-radius .5em 
+					border-bottom 1px solid transparent
+					border-bottom 1px solid transparent
+					border-bottom 1px solid transparent
+					border-bottom 1px solid red
+					box-shadow 0 0 10px black
+					overflow hidden
+					transition .3s
+					&:hover
+						border 1px solid white
+						box-shadow 0 0 10px amarillo_claro
+					&-Link 
+						text-shadow 1px 1px 10px black
+						line-height 40px 
+						text-align center 
+						height 100%
+						width 100%
+						font-weight bolder
+						display block 
+						transition .3s
+						&:hover 
+							background rgba(white, .3)
+					
+	.MenuHeadModulo 
+		position absolute 
+		top 0
+		align-items center
+		display flex 
+		height 60px
+		justify-content center
+		width 100%
+		border-bottom 2px solid white
+		box-shadow 0 0 5px black
+		>h2 
+			background rgba(black, .3)
+			border-right 2px solid white
+			color white
+			display block
+			height 100%
+			font-size 1.5em
+			line-height 60px 
+			text-align center
+			text-shadow 1px 1px 10px black
+			width 100%
+		&-Boton 
+			display flex 
+			justify-content center
+			width 20%
+			>a 
+				border 2px solid white 
+				border-radius 50%
+				box-shadow 0 0 10px black
+				display block 
+				height 45px 
+				text-shadow center
+				width 45px 	
+header 
+	width 100%
+	z-index 5
+	.Menu 
+		align-items center
+		border-bottom 2px solid white 
+		box-shadow 1px 1px 10px black
+		display flex
+		justify-content center
+		width 100%
+		height 47px
+		&-Boton 
+			border-right 2px solid white
+			width 15%
+			display flex
+			justify-content center
+			align-items center
+			&-Link
+				background rgba(white, .3)
+				box-shadow 0 0 5px black
+				display block
+				width 40px 
+				height 40px 
+				border 2px solid white
+				border-radius 50%
+				transition .3s
+				&:hover 
+					transform scale(1.1)
+		&-Usuario 
+			align-items center
+			display flex
+			justify-content center 
+			width 85%
+			&-Avatar	
+				display flex 
+				justify-content center
+				align-items center	
+				height 40px	
+				&-Link
+					display block
+					width 32px
+					height 32px
+					
+					&-Imagen
+						box-shadow 1px 1px 10px black
+						width 100%
+						height 100%
+						border-radius 50%
+						transition .4s
+						&:hover 
+							transform rotateY(360deg)
+				&-Nombre 
+					margin 0 .7em
+					&-Link 
+						text-shadow 1px 1px 10px black
+						transition .3
+						font-size .9em
+						font-weight bolder
+						&:hover 
+							text-decoration underline
+					
+			&-Configuracion 
+				align-items center 
+				display flex 
+				flex-direction column
+				justify-content center 
+				position relative 
+				width 32px
+				height 32px
+				.Boton 
+					border-bottom 12px solid transparent
+					border-left 12px solid transparent
+					border-right 12px solid transparent
+					border-top 12px solid black
+					height 20px
+					left 7px
+					position absolute
+					top 16px
+					width 20px
+					
+				.Panel 
+					background rgba(black, .6)
+					border 1px solid turqueza
+					border-radius 0 0 .5em .5em
+					box-shadow 1px 1px 10px black
+					left -45px
+					position absolute
+					top 28px 
+					width 130px 
+					z-index 5
+					&-Item
+						text-align center
+						margin .4em 0
+						&-Link 
+							display block
+							font-weight bolder
+							font-size .85em
+							&:hover 
+								text-decoration underline
+				
+					
+	.HeadMenu 
+		align-items center
+		display flex 
+		height 13vh 
+		justify-content center 
+		width 100%
+		&-Marco 
+			width 75%
+			.SubTitulo 
+				color white 
+				font-size 1.5em 
+				font-weight bolder 
+				text-align center
+				text-shadow 1px 1px 10px black
+				
+		.Avatar 
+			align-items center
+			border 2px solid white
+			border-radius 50%
+			box-shadow 1px 1px 10px black
+			display flex 
+			height 50px 
+			justify-content center
+			width 50px 
+			background rgba(black, .3)
+			&-Imagen 
+				width 100%
+				height 100%
+				transition .5s
+				&:hover 
+					transform rotateY(360deg)
+		#Avatar-Modulo 
+			display none	
+footer 
+	background rgba(white, .2)
+	width 100%
+	z-index 5
+	.PiePagina 
+		width 100%
+		display flex
+		justify-content center
+		align-items center
+		.LogotipoEntidad
+			border-right 2px solid white
+			margin .25em 0
+			width 15%
+			display flex
+			justify-content center
+			align-items center
+			&-NombreEntidad
+				display none
+			&-Imagen
+				width 32px 
+				height 32px
+				transition .3s
+				&:hover 
+					transform rotateY(360deg)
+		#LogotipoEntidad-Creador 
+			display none
+		.Copyright 
+			width 85%
+			margin 0 .5em
+			display flex
+			justify-content center 
+			align-items center
+			&-Descripcion 
+				color red
+				margin 0 auto
+				text-align center
+				font-weight bolder 
+				font-size .6em
+				text-shadow 1px 1px 10px black
+			&-Entidad
+				margin 0 auto
+				font-size .8em
+				text-align center
+				text-shadow 1px 1px 10px black
+				&-Link
+					margin 0 .3em
+					&:hover 
+						text-decoration underline
+
+@media screen and (min-width:480px)
+	header
+		.HeadMenu
+			height 18vh
+			.Avatar 
+				height 80px 
+				width 80px
+			#Avatar-Modulo
+				display block
+			&-Marco
+				width 60%
+				.SubTitulo
+					font-size 1.9em
+		
+			

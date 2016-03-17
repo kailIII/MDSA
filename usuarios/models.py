@@ -6,6 +6,8 @@ from django.db import models
 from django.core.validators import validate_ipv46_address
 from django.template.defaultfilters import slugify
 import socket
+import os
+from django.conf import settings
 
 class UserManager(BaseUserManager):
 	def _create_user(self, username, email, password, is_staff, is_superuser, **extra_fields):
@@ -41,7 +43,11 @@ class UserManager(BaseUserManager):
 class Usuario(AbstractBaseUser, PermissionsMixin):
 	username 						= models.CharField(max_length=50, unique=True)	
 	email    						= models.EmailField(max_length=50, unique=True)
-	avatar   						= models.ImageField(blank=True, null=True, upload_to="imagen_avatar")
+	avatar   						= models.ImageField(blank=True, 
+														null=True, 
+														upload_to="imagen_avatar",
+														default = os.path.join(settings.MEDIA_ROOT,'imagen_avatar','Sin-Avatar-1.jpg')
+														)
 	slug							= models.SlugField(editable=False, max_length=255 ,unique=True)
 	fecha_registro 			   		= models.DateTimeField(auto_now_add=True, auto_now=False)
 	#usuario_creador          	 	= models.ForeignKey('self')

@@ -15,11 +15,13 @@ import datetime
 
 
 class Documento(models.Model):
+	BOOL_ORIGEN		 				= ((True, 'Interno'), (False, "Externo"))
+
 	tipos_documento  				= models.ForeignKey(TipoDocumento)
 	siglas							= models.CharField(max_length=25, help_text='Escribir siglas de la entidad.')
 	anio			 				= models.DateTimeField(default=datetime.datetime.now())
 	numero_documento 				= models.PositiveIntegerField()
-	origen			 				= models.BooleanField(default=1)
+	origen			 				= models.BooleanField(default=1, choices=BOOL_ORIGEN)
 	asunto 			 				= models.CharField(max_length=225, help_text='Escribir asunto del documento o Expediente (Opcional).')
 	numero_folio					= models.PositiveIntegerField()
 	prioridad						= models.ForeignKey(Prioridad)

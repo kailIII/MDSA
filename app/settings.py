@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'bandejas.apps.BandejasConfig',
     'bandejas_mensajes.apps.BandejasMensajesConfig',
     'rest_framework',
+    'index.apps.IndexConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -164,7 +165,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
+#Configuración de archivos estaticos 
 STATIC_URL = '/static/'
+#MEDIA -> STATIC
+STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['static'])
+
+STATICFILES_FINDERS = {
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+}
+
+#Activar cache para archivos estaticos
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFileStorage'
 
 #Imagenes, audios y videos
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
@@ -177,4 +189,5 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 LOGIN_REDIRECT_URL = '/admin/' # LogIn
 LOGOUT_REDIRECT_URL = '/'
 
-#LOGIN_URL='/usuario/login' 
+#LOGIN_URL='/usuario/login'
+

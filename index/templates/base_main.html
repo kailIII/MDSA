@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html lang="es">
+	<!-- Juegos de Carácteres -->
+		<meta charset="utf-8"/>
+		<!-- Autor -->
+		<meta name="author" content="Roberto Gian Franco Carbonell Saravia"/>
+		<!-- Descripción de la Página Web -->
+		<meta name="description" content=" Sistemas - ERP"/>
+		<!-- Mobile -> verificar si deseas zoom en user-->
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+		<!-- Compatibilidad Internet Explorer -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<!-- Titulo -->
+		<title>.::{% block title %} {% endblock title %}::.</title>
+
+		<!-- Icono del navegador -->
+		<link rel= "shortcut icon" href="#" type="image/x-icon"/>
+		<!-- Estilos y Diseños -->
+		<link rel="stylesheet" href="{% static "stylesheets/styles.css" %}"/>
+	<body>
+		<header class=" {% block position_absolute_header %} {% endblock position_absolute_header %} ">
+			{% block header %}
+			{% endblock header %}
+		</header>
+		<!-- Barra de Menu Modulo -->
+		<aside id="MenuModulo">
+			<!-- Head Módulo -->
+			<div class="MenuHeadModulo">
+				<h2>
+					Menu - Módulos 
+				</h2>
+				<div class="MenuHeadModulo-Boton" id="Menu-Boton-Close">
+					
+				</div>
+			</div>
+			<!-- Módulo -->
+			<div class="BarraModulos">
+				<ul class="Modulos" id="Modulos">
+					
+				</ul>
+			</div>
+		</aside>
+		
+		<section>
+			{% block section %}
+			{% endblock section %}
+		</section>
+		<footer class="{% block position_absolute_footer %} {% endblock position_absolute_footer %}">
+			{% block footer %}
+			{% endblock footer %}
+		</footer>
+		<!-- Template -->
+		<!-- Boton Menu Open - Template -->
+		<script id="BotonMenu-Open-Template" type="text/template">
+			<a href="" class="Menu-Boton-Link" id="Menu-Open">
+				
+			</a>
+		</script>
+
+		<!-- Boton Menu Close - Template -->
+		<script id="BotonMenu-Close-Template" type="text/template">
+			<a href="#" class="MenuHeadModulo-Boton-Link" id="Menu-Close">
+									
+			</a>
+		</script>
+		<!-- Menu Grafico - Template -->
+		<script id="MenuGrafico-Template" type="text/template">
+		 <!-- Item - Avatar -->
+			<figure class="Item-Avatar">
+				<a href="" class="Item-Avatar-Link">
+					<img src="" alt=""  class="Item-Avatar-Link-Imagen"/>
+				</a>
+			</figure>
+			<div class="Boton">
+				<a href= ""   class="Boton-Link">
+					<%= nombre %>
+				</a>
+			</div>
+		</script>
+		<!-- Menu de Módulos -->
+		<script id="MenuModulo-Template" type="text/template" >
+			<!-- Avatar - Modulo -->
+			<figure class="Modulos-Item-Avatar">
+				<a href="#" class="Modulos-Item-Avatar-Link">
+					<img src="{% static 'imagenes/png/Panel-Control-1.png'%}" alt="" class="Modulos-Item-Avatar-Link-Imagen">
+				</a>
+			</figure>
+			<!-- Nombre del Módulo -->
+			<div class="Modulos-Item-Modulo">
+				<a href="#" class="Modulos-Item-Modulo-Link">
+					<%= nombre %>
+				</a>
+			</div>
+		</script>
+		
+
+		<!-- Librerias -->
+		<script type="text/javascript" src="{% static "javascripts/librerias/jquery-2.2.1.min.js "%} "></script>
+		<script type="text/javascript" src="{% static "javascripts/librerias/underscore-min.js "%} "></script>
+		<script type="text/javascript" src="{% static "javascripts/librerias/backbone-min.js "%} "></script>
+		<script type="text/javascript" src="{% static "javascripts/librerias/handlebars-v4.0.5.js "%} "></script>
+		<!-- Modelo - Vista - Template - Router -->
+		<script type="text/javascript" src="{% static "javascripts/backbone/init.js"%} "></script>
+		<!-- Modelo -->
+		<script type="text/javascript" src="{% static "javascripts/backbone/models/menu-grafico-model.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/models/menu-modulo-model.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/models/boton-menu-open-model.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/models/boton-menu-close-model.js" %} "></script>
+		<!-- Collecciones -->
+		<script type="text/javascript" src="{% static "javascripts/backbone/collections/menu-grafico-collection.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/collections/menu-modulo-collection.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/collections/boton-menu-open-collection.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/collections/boton-menu-close-collection.js" %} "></script>
+		<!-- Vista -->
+		<script type="text/javascript" src="{% static "javascripts/backbone/views/boton-menu-open-view.js" %} "></script>
+		
+
+		<script type="text/javascript" src="{% static "javascripts/backbone/views/boton-menu-close-view.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/views/menu-grafico-view.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/views/menus-graficos-view.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/views/menu-modulo-view.js" %} "></script>
+		<script type="text/javascript" src="{% static "javascripts/backbone/views/menus-modulos-view.js" %} "></script>
+
+		<!-- Router -->
+		<script type="text/javascript" src="{% static "javascripts/backbone/routers/router.js" %} "></script>
+		<!-- Script Principal - Main -->
+		<script type="text/javascript" src="{% static "javascripts/main.js"%} "></script>
+
+	</body>
+</html>

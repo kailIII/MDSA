@@ -1,0 +1,27 @@
+{% extends 'base_menu.html' %}
+{% load static from staticfiles %}
+<!-- Header  -->
+{% block position_absolute_header %} 
+	Position-Absolute-Top
+{% endblock position_absolute_header %}
+
+<!-- Section Menu -->
+{% block section %}
+	<!-- Menu Grafico -->
+	
+	<div class="MenuGrafico">
+		<!-- Fondo del Menu Principal -->
+		<img src="{% block fondo_imagen %} {% endblock fondo_imagen %}" alt="" class="MenuGrafico-Fondo"/>
+		<!-- Items de Menu Grafico -->
+		<div class="MenuGrafico-Marco" >
+			<ul class="MenuGrafico-Marco-Items"  id="MenuGrafico" >
+				
+			</ul>
+		</div>
+	</div>
+{% endblock section %}
+
+<!-- Header  -->
+{% block position_absolute_footer %} 
+	Position-Absolute-Bottom
+{% endblock position_absolute_footer %}
