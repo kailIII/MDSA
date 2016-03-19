@@ -1,0 +1,61 @@
+{% extends 'base_menu.html' %}
+
+{% block section %}
+	<div class="ListaObjeto">
+		<div class="Buscador">
+			<form action="" method="GET" class="Buscador-Form">
+				<div class="Buscador-Form-Marco">
+					<label for="Buscador" class="Buscador-Form-Marco-Label icon-search">
+						
+					</label>
+				</div>
+				<!-- Elemento - Buscador -->
+				<div id="Buscador" class="Buscador-Form-Elemento">
+					<input type="text" placeholder="Buscar" class="Buscador-Form-Elemento-InputText"/>
+				</div>
+				<!-- Boton -->
+				<div class="Buscador-Form-Boton">
+					<input type="submit" value="Buscar" class="Buscador-Form-Boton-InputSubtmit ">
+				</div>
+			</form>
+		</div>
+		<!-- Lista de Objetos -->
+		<div class="Marco">
+			<ul class="Objetos">
+				{%for objeto in object_list%}
+					<li class="Objeto">
+					
+					    <figure class="Objeto-Avatar">
+							<img src="{{objeto.avatar.url}}" alt="{{objeto.username}}" class="Objeto-Avatar-Imagen"/>
+						</figure>
+				
+						<div class="Objeto-Datos">
+							<div class="Objeto-Datos-Nombre">
+								<a href="{% url 'usuario:detail' objeto.id %}" class="Objeto-Datos-Nombre-Link"> 
+									{{objeto.username}} 
+								</a>
+							</div>
+							<ul class="Objeto-Datos-Configuracion">
+								<li class="Objeto-Datos-Configuracion-Item">
+									<a href="{% url 'usuario:detail' objeto.id %}"  class="Objeto-Datos-Configuracion-Item-Link icon-note">
+							
+									</a>
+								</li>
+								<li class="Objeto-Datos-Configuracion-Item">
+									<a href="{% url 'usuario:update' objeto.id %}" class="Objeto-Datos-Configuracion-Item-Link icon-pen">
+				
+									</a>
+								</li>
+								<li class="Objeto-Datos-Configuracion-Item">
+									<a href=""  class="Objeto-Datos-Configuracion-Item-Link icon-trash">
+							
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				{%endfor%}
+			</ul>
+		</div>
+	</div>
+{% endblock section %}

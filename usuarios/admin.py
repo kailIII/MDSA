@@ -22,7 +22,7 @@ class UsuarioAdmin(UserAdmin):
 
 	class Meta:
 		model = Usuario
-		exclude = ('username')
+		#exclude = ('username')
 		
 # Register your models here.
 

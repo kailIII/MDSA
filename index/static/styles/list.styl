@@ -1,0 +1,141 @@
+gris = #808080
+gris_claro = #EFF2E7
+turqueza = #1bd6e0
+amarillo_claro = #ffe788
+section
+	.ListaObjeto
+		height 70vh
+		width 100%
+		.Marco
+			height 60vh
+			overflow-y auto
+			.Objetos 
+				
+				display flex
+				justify-content center 
+				align-items center 
+				flex-direction column
+				.Objeto 
+					width 90%
+					display flex
+					justify-content center 
+					align-items center
+					height 80px	
+					border-bottom 1px solid red				
+					&-Avatar 
+						width 65px 
+						height 65px
+						display flex 
+						justify-content center
+						align-items center
+						border-right 2px solid black
+						transition .3s
+						
+						&-Imagen 
+							background rgba(black, .1)
+							border-radius 50%
+							width 50px 
+							height 50px
+							vertical-align top
+							box-shadow 0 0 10px black
+							transition .5s
+							&:hover
+								box-shadow 0 0 10px amarillo_claro
+								transform rotateY(360deg) scale(1.1)
+					&-Datos 
+						width 80%
+						display flex
+						justify-content center 
+						align-items center
+						flex-direction column
+						overflow-x auto
+						&-Nombre
+							height 32px
+							width 80%
+							border-bottom 1px solid turqueza
+							text-align center
+							padding .25em 0
+							&-Link 
+								font-size 1em 
+								font-weight bolder 
+								color white 
+								text-shadow 1px 1px 10px black
+								&:hover 
+									text-decoration underline
+						&-Configuracion
+							margin .25em 0
+							height 32px
+							width 70%
+							display flex 
+							justify-content space-between 
+							align-items center 
+							&-Item 
+								box-shadow 0 0 5px black
+								margin .25em 0
+								border 2px solid black
+								border-radius 50%
+								width 32px 
+								height 32px 
+								&-Link 
+									color black
+									
+									line-height 29px
+									border-radius 50%
+									width 100%
+									height 100%
+									display block 
+									text-align center 
+									font-weight bolder
+		.Buscador 
+			&-Form
+				align-items center 
+				display flex 
+				height 42px 
+				justify-content center 
+				margin .4em .2em
+				text-align center
+				width 95%
+				&-Boton
+					
+					border-radius .5em
+					&-InputSubtmit
+						border 1px solid black
+						padding 0
+						text-align center
+						border-radius .5em
+						width 70px
+						height 35px
+						outline 0
+						box-shadow 0 0 10px black
+						color white
+						text-shadow 1px 1px 10px black
+						font-weight bolder
+				&-Elemento 
+					&-InputText
+						font-weight bolder 
+						border 1px solid gris
+						border-radius 5px
+						box-shadow 0 0 10px black
+						height 35px
+						outline 0
+						padding 0 .5em
+						width 80%
+				&-Marco 
+			
+					&-Label
+						border-right 1px solid black 
+						color black
+						display block 
+						font-weight bolder
+						height 35px 
+						line-height 35px
+						text-align center
+						width 35px 
+						
+					
+					
+					
+				
+				
+							 
+		

@@ -3,6 +3,8 @@
 from django.conf import settings
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.contrib.auth.models import Group, Permission
+
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.views.decorators.debug import sensitive_post_parameters
@@ -19,6 +21,7 @@ from django.views.generic import View
 
 
 from .models import Usuario
+from .serializer import UsuarioSerializer, GroupSerializer, PermissionSerializer
 from .forms import UsuarioForm, UserCreationEmailForm
 
 from django.core.urlresolvers import reverse_lazy
@@ -91,7 +94,7 @@ class UsuarioTemplateView(TemplateView):
 class UsuarioCreateView(CreateView):
 	form_class    = UserCreationEmailForm
 	models        = Usuario
-	success_url   =  '/admin/'
+	success_url   =  '/list/'
 	template_name = 'usuario_create.html'
 
 	def form_valid(self, form):
@@ -179,7 +182,7 @@ class UsuarioDetailView(DetailView):
 			username = self.request.user.username
 
 		data = {
-			'is_auth':is_auth,
+			'is_auth'	 :is_auth,
 			'username'   :username
 		}
 
@@ -194,16 +197,49 @@ class UsuarioListView(ListView):
 
 	def get_context_data(self, **kwarg):
 		context 	= super(UsuarioListView, self).get_context_data(**kwarg)
-		is_auth 	= False 
-		username    = None
+		is_auth  = False 
+		username = None
+		avatar   = None
+
 		if self.request.user.is_authenticated():
+			id_usuario  = self.get_user_id()
 			is_auth 	= True
-			username    = self.request.user.username
+			username    = self.get_username()
+			avatar 		= self.get_user_avatar()
 
 		data = {
-			'is_auth'	 :is_auth,
-			'username'   :username
+			'id_usuario' : id_usuario,
+			'is_auth'	 : is_auth,
+			'username'   : username,
+			'avatar'	 : avatar,
 		}
 
 		context.update(data)
 		return context
+
+	def get_user_id(self):
+		return self.request.user.id 
+
+	def get_username(self):
+		return self.request.user.username
+
+	def get_user_avatar(self):
+		return self.request.user.avatar
+
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+	model      		 = Usuario 
+	serializer_class = UsuarioSerializer
+	queryset         = Usuario.objects.all()
+	queryset_detail  = queryset.prefetch_related('groups__permissions')
+
+class PermissionViewSet(viewsets.ModelViewSet):
+	model 			 = Permission
+	serializer_class = PermissionSerializer
+	queryset 		 = Permission.objects.all()
+
+class GroupViewSet(viewsets.ModelViewSet):
+	model      		 = Group 
+	serializer_class = GroupSerializer
+	queryset         = Group.objects.all()
+

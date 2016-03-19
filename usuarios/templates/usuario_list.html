@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>List View</title>
-</head>
-<body>
-	<div>
-		{%for usuario in object_list%}
-			<li>
-				{{usuario.username}}
-			</li>
-		{%endfor%}
-	</div>
-</body>
-</html>
+{% extends 'list.html' %}
+{% load static from staticfiles %}
+<!-- HeadMenu - Avatar - Sistema -->
+{% block avatar_sistema %} 
+	{% static 'imagenes/ico/Panel-Control-1.ico' %}
+{% endblock avatar_sistema %}
+<!-- Head - Menu -->
+{% block color_fondo %} 
+	Fondo-Turqueza-Transparente 
+{% endblock color_fondo %}
+<!--  -->
+{% block color_menu_principal %} 
+	Fondo-Rojo-Encendido
+{% endblock color_menu_principal %}
+<!-- HeadMenu - Rótulo -->
+{% block titulo_menu%}
+	Menu - Usuario
+{% endblock titulo_menu%}
+<!-- HeadMenu - Avatar - Sistema -->
+{% block avatar_modulo %} 
+	{% static 'imagenes/png/Usuario-5.png' %}
+{% endblock avatar_modulo %}
+
+<!-- Section Menu -->
+{% block fondo_imagen %} 
+	{% static 'imagenes/jpg/Fondo-AzulNegro-1.jpg' %}
+{% endblock fondo_imagen %}

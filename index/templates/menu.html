@@ -15,7 +15,32 @@
 		<!-- Items de Menu Grafico -->
 		<div class="MenuGrafico-Marco" >
 			<ul class="MenuGrafico-Marco-Items"  id="MenuGrafico" >
-				
+				<li class="Item">
+					 <!-- Item - Avatar -->
+				 	<figure class="Item-Avatar">
+				 		<a href="{% url 'usuario:create' %}" class="Item-Avatar-Link">
+				 			<img src="{% static 'imagenes/png/Usuario-6.png' %}" alt=""  class="Item-Avatar-Link-Imagen"/>
+				 		</a>
+				 	</figure>
+				 	<div class="Boton">
+				 		<a href= "{% url 'usuario:create' %}"   class="Boton-Link">
+				 			Nuevo 
+				 		</a>
+				 	</div>   
+				</li>
+				<li class="Item">
+					 <!-- Item - Avatar -->
+				 	<figure class="Item-Avatar">
+				 		<a href="{% url 'usuario:list' %}" class="Item-Avatar-Link">
+				 			<img src="{% static 'imagenes/png/Usuario-1.png' %}" alt=""  class="Item-Avatar-Link-Imagen"/>
+				 		</a>
+				 	</figure>
+				 	<div class="Boton">
+				 		<a href= "{% url 'usuario:list' %}"  class="Boton-Link">
+				 			Consulta
+				 		</a>
+				 	</div>   
+				</li>
 			</ul>
 		</div>
 	</div>

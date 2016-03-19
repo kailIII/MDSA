@@ -21,7 +21,7 @@ class UserManager(BaseUserManager):
 		user.save(using=self._db)
 		return user 
 
-	def create_user(self, username, email, password=None, **extra_fields):
+	def create_user(self, username, email, password, **extra_fields):
 		try:
 			extra_fields.setdefault('nombre_host', socket.gethostname())
 		except:

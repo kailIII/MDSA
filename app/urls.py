@@ -23,9 +23,13 @@ from rest_framework import routers
 
 #ViewSet 
 from paises.views import PaisViewSet 
+from usuarios.views import UsuarioViewSet, GroupViewSet, PermissionViewSet
 
 router = routers.DefaultRouter()
 router.register(r'paises', PaisViewSet)
+router.register(r'usuario', UsuarioViewSet)
+router.register(r'groups', GroupViewSet)
+router.register(r'permissions', PermissionViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

@@ -8,6 +8,7 @@ urlpatterns = [
 
 	url(r'^create/$', views.UsuarioCreateView.as_view(), name='create'),
     url(r'^update/(?P<pk>\d+)/$', views.UsuarioUpdateView.as_view(), name='update'),
+    #url(r'^delete/(?P<pk>\d+)/$', views.UsuarioDeleteView.as_view(), name='delete'),
     url(r'^detail/(?P<pk>\d+)/$', views.UsuarioDetailView.as_view(), name='detail'),
     url(r'^list/$', views.UsuarioListView.as_view(), name='list'),
     url(r'^$', views.UsuarioTemplateView.as_view(), name='template'),
